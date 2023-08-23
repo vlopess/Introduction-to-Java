@@ -12,6 +12,10 @@ Para executar cada programa deve-se entrar na pasta em que o mesmo se encontra e
   javac NomedaClasse.java
   javac Main.java
   java Main
+
+  //Caso só haja a Classe:
+  javac NomedaClasse.java
+  java NomedaClasse
 ```
 
 
