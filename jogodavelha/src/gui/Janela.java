@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import model.Tabuleiro;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -40,6 +43,7 @@ public class Janela extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 320, 304);
 		contentPane = new JPanel();
@@ -54,7 +58,6 @@ public class Janela extends JFrame {
 		comboBox.setBounds(40, 24, 48, 24);
 		contentPane.add(comboBox);
 		lista.add(comboBox);
-
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setBounds(122, 24, 48, 24);
@@ -108,49 +111,58 @@ public class Janela extends JFrame {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox.disable();
 				
 			}
 		});
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox_1.disable();
 			}
 		});
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox_2.disable();
 			}
 		});
 		
 		comboBox_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox_3.disable();
 			}
 		});
 		
 		comboBox_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox_4.disable();
 			}
 		});
 		comboBox_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox_5.disable();
 			}
 		});
 		comboBox_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				verificar(lista);
+				verificar(lista);				
+				comboBox_6.disable();
 			}
 		});
 		comboBox_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox_7.disable();
 			}
 		});
 		comboBox_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
+				comboBox_8.disable();
 			}
 		});
 		
@@ -176,6 +188,7 @@ public class Janela extends JFrame {
 	private void resetar(ArrayList<JComboBox> lista) {
 		for(JComboBox cb : lista) {
 			cb.setSelectedItem("");
+			cb.setEnabled(true);
 		}
 		textField.setText("");
 		btnResetar.setVisible(false);
@@ -189,44 +202,21 @@ public class Janela extends JFrame {
 	}
 	
 	private void verificar(ArrayList<JComboBox> lista) {
-
- 		for(int i = 0; i < 9 ; i+=3) {
- 			if(lista.get(i).getSelectedItem().equals(lista.get(i+1).getSelectedItem()) && lista.get(i+1).getSelectedItem().equals(lista.get(i+2).getSelectedItem())) {
- 				if(!lista.get(i).getSelectedItem().equals("")) {		
- 					textField.setText("O " + lista.get(i).getSelectedItem() +" venceu");	
- 					btnResetar.setVisible(true);
- 					return;
- 				}
- 			}
+		Tabuleiro tabuleiro = new Tabuleiro();
+		
+		ArrayList<String> position = new ArrayList<String>();
+		
+		for(int i = 0 ; i < 9 ; i++) {
+ 			position.add((String) lista.get(i).getSelectedItem());
  		}
- 		for(int i = 0; i < 3 ; i++) {
- 			if(lista.get(i).getSelectedItem().equals(lista.get(i+3).getSelectedItem()) && lista.get(i+3).getSelectedItem().equals(lista.get(i+6).getSelectedItem())) {
- 				if(!lista.get(i).getSelectedItem().equals("")) {		
- 					textField.setText("O " + lista.get(i).getSelectedItem() +" venceu");	
- 					btnResetar.setVisible(true);
- 					return;
- 				}
- 			}
- 		}
- 		if(lista.get(0).getSelectedItem().equals(lista.get(4).getSelectedItem()) && lista.get(4).getSelectedItem().equals(lista.get(8).getSelectedItem())) {
- 			if(!lista.get(0).getSelectedItem().equals("")) {		
- 				textField.setText("O " + lista.get(0).getSelectedItem() +" venceu");
- 				btnResetar.setVisible(true);
- 				return;
- 			}
- 		}
- 		if(lista.get(2).getSelectedItem().equals(lista.get(4).getSelectedItem()) && lista.get(4).getSelectedItem().equals(lista.get(6).getSelectedItem())) {
- 			if(!lista.get(2).getSelectedItem().equals("")) {		
- 				textField.setText("O " + lista.get(2).getSelectedItem() +" venceu");	
- 				btnResetar.setVisible(true);
- 				return;
- 			}
- 		}
- 		int count = 0;
- 		for(int i = 0 ; i < 9 ; i++) {
- 			if(!lista.get(i).getSelectedItem().equals("")) count++;
- 		}
- 		if(count == 9) {
+		tabuleiro.verificarGanhador(position);
+		if(tabuleiro.getWinner() != null) {
+			textField.setText("O " +  tabuleiro.getWinner() +" venceu");	
+			btnResetar.setVisible(true);			
+		}
+		
+			
+ 		if(tabuleiro.partidaEncerrada()) {
  			textField.setText("Empate!");	
  			btnResetar.setVisible(true);
  		}
