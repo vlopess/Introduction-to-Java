@@ -111,52 +111,60 @@ public class Janela extends JFrame {
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
-				comboBox.disable();
+				if(!comboBox.getSelectedItem().equals(""))
+					comboBox.disable();
 				
 			}
 		});
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
-				comboBox_1.disable();
+				if(!comboBox_1.getSelectedItem().equals(""))
+					comboBox_1.disable();
 			}
 		});
 		comboBox_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
-				comboBox_2.disable();
+				if(!comboBox_2.getSelectedItem().equals(""))
+					comboBox_2.disable();
 			}
 		});
 		
 		comboBox_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
-				comboBox_3.disable();
+				if(!comboBox_3.getSelectedItem().equals(""))
+					comboBox_3.disable();
 			}
 		});
 		
 		comboBox_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
-				comboBox_4.disable();
+				if(!comboBox_4.getSelectedItem().equals(""))
+					comboBox_4.disable();
 			}
 		});
 		comboBox_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
-				comboBox_5.disable();
+				if(!comboBox_5.getSelectedItem().equals(""))
+					comboBox_5.disable();
 			}
 		});
 		comboBox_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				verificar(lista);				
-				comboBox_6.disable();
+				verificar(lista);
+				if(!comboBox_6.getSelectedItem().equals(""))
+					comboBox_6.disable();
 			}
 		});
 		comboBox_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				verificar(lista);
-				comboBox_7.disable();
+				if(!comboBox_7.getSelectedItem().equals(""))
+					comboBox_7.disable();
 			}
 		});
 		comboBox_8.addActionListener(new ActionListener() {
